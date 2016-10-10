@@ -23,7 +23,7 @@
 }
 
 @property (strong, nonatomic) IBOutlet UIImageView *circularImgvw;
-@property (nonatomic,assign) CLLocation *sourceLocation,*destinationLocation;
+@property (nonatomic,retain) CLLocation *sourceLocation,*destinationLocation;
 @property (nonatomic,retain) AppDelegate *app;
 
 @property (strong, nonatomic) IBOutlet UILabel *ridernameLbl;

@@ -99,14 +99,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VgT-j2-f3i">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VgT-j2-f3i">
                                 <rect key="frame" x="0.0" y="73" width="414" height="120"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pSs-CB-BMc">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pSs-CB-BMc">
                                         <rect key="frame" x="8" y="0.0" width="100" height="100"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="100" id="H2m-pU-WJT"/>
-                                            <constraint firstAttribute="height" constant="100" id="jbt-Hc-svH"/>
+                                            <constraint firstAttribute="width" constant="100" id="GPC-Xu-cna"/>
+                                            <constraint firstAttribute="height" constant="100" id="OIK-cB-Qy2"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="RiderName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BVk-hy-8YJ">
@@ -142,6 +142,8 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.23921568630000001" green="0.25882352939999997" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="pSs-CB-BMc" firstAttribute="leading" secondItem="VgT-j2-f3i" secondAttribute="leading" constant="8" id="AV8-f8-LOz"/>
+                                    <constraint firstItem="pSs-CB-BMc" firstAttribute="top" secondItem="VgT-j2-f3i" secondAttribute="top" id="Rmm-uT-TIg"/>
                                     <constraint firstAttribute="bottom" secondItem="pSs-CB-BMc" secondAttribute="bottom" constant="5" id="x1j-17-WER"/>
                                 </constraints>
                                 <variation key="default">
@@ -152,10 +154,6 @@
                             </view>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UOJ-im-uqY">
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="CEY-u7-tme"/>
-                                    <constraint firstAttribute="width" constant="414" id="bJz-gS-OYK"/>
-                                </constraints>
                                 <items>
                                     <navigationItem title="Journey Detail" id="y1R-ny-K8Q"/>
                                 </items>
@@ -164,18 +162,21 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="VgT-j2-f3i" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="2gU-KX-ehW"/>
-                            <constraint firstAttribute="trailing" secondItem="VgT-j2-f3i" secondAttribute="trailing" id="Cs3-rg-fdh"/>
-                            <constraint firstItem="VgT-j2-f3i" firstAttribute="top" secondItem="UOJ-im-uqY" secondAttribute="bottom" id="UYi-gH-s9S"/>
-                            <constraint firstItem="VgT-j2-f3i" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="eOK-hg-fpc"/>
-                            <constraint firstItem="UOJ-im-uqY" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="hgE-Dg-t9d"/>
-                            <constraint firstItem="UOJ-im-uqY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="kQl-ze-02k"/>
+                            <constraint firstItem="UOJ-im-uqY" firstAttribute="leading" secondItem="VgT-j2-f3i" secondAttribute="leading" id="9dy-K2-Pxz"/>
+                            <constraint firstAttribute="trailing" secondItem="VgT-j2-f3i" secondAttribute="trailing" id="C55-tx-C79"/>
+                            <constraint firstItem="VgT-j2-f3i" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="G8Y-Ag-n1c"/>
+                            <constraint firstItem="UOJ-im-uqY" firstAttribute="trailing" secondItem="VgT-j2-f3i" secondAttribute="trailing" id="NoX-ii-Kcb"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="VgT-j2-f3i" secondAttribute="bottom" constant="543" id="dpF-lm-Eji"/>
                             <constraint firstItem="VgT-j2-f3i" firstAttribute="top" secondItem="UOJ-im-uqY" secondAttribute="bottom" constant="66" id="kSh-UW-YvU"/>
-                            <constraint firstAttribute="trailing" secondItem="UOJ-im-uqY" secondAttribute="trailing" id="tmA-hB-nJa"/>
+                            <constraint firstItem="UOJ-im-uqY" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="mMF-jP-amk"/>
+                            <constraint firstItem="VgT-j2-f3i" firstAttribute="top" secondItem="UOJ-im-uqY" secondAttribute="bottom" constant="1" id="nWu-sI-sne"/>
+                            <constraint firstItem="VgT-j2-f3i" firstAttribute="top" secondItem="UOJ-im-uqY" secondAttribute="bottom" constant="1" id="vi8-mT-qcK"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="2gU-KX-ehW"/>
                                 <exclude reference="kSh-UW-YvU"/>
+                                <exclude reference="vi8-mT-qcK"/>
                             </mask>
                         </variation>
                     </view>

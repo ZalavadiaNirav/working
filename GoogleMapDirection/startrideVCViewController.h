@@ -10,7 +10,7 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import "AppDelegate.h"
 
-@interface startrideVCViewController : UIViewController <UITextFieldDelegate>
+@interface startrideVCViewController : UIViewController <UITextFieldDelegate,UIAlertViewDelegate>
 {
         
 
@@ -24,7 +24,8 @@
     CLGeocoder *geocoder;
     CLLocation *sourceLoc,*destinationLoc,*tempLoc;
     CFBit bit;
-
+    UIAlertController *pleaseWaitAlert;
+    UIActivityIndicatorView *indicator;
 }
 
 @property (nonatomic,retain) AppDelegate *app;

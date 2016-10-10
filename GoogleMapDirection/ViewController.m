@@ -20,7 +20,7 @@
 
 @implementation ViewController
 
-
+@synthesize sourceLocation,app;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -64,7 +64,7 @@
 
     destinationLocation=[[CLLocation alloc] initWithLatitude:destinationMarker.position.latitude longitude:destinationMarker.position.longitude];
     [self drawRoute];
-    [self vehicalRoute];
+//    [self vehicalRoute];
 }
 
 -(void)vehicalRoute

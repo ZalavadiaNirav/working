@@ -14,15 +14,18 @@
 
 @implementation startrideVCViewController
 
-@synthesize geocoder;
+@synthesize geocoder,tempLoc;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
     
     ridernameTxtfield.delegate=self;
     sourceTxtfield.delegate=self;
     destinationTxtfield.delegate=self;
     
+
     
 }
 
@@ -46,26 +49,47 @@
 
 -(IBAction)startrideAction:(id)sender
 {
-    if(!(([sourceTxtfield.text isEqualToString:@""]) && ([destinationTxtfield.text isEqualToString:@""])))
+     pleaseWaitAlert=[UIAlertController alertControllerWithTitle:nil message:@"Please Wait...\n\n\n\n" preferredStyle:UIAlertControllerStyleAlert];
+    
+     indicator=[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    
+    indicator.color=[UIColor blackColor];
+    indicator.center=CGPointMake(pleaseWaitAlert.view.bounds.size.width/2, pleaseWaitAlert.view.bounds.size.height/2);
+    indicator.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin |
+    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin;
+    
+    [indicator startAnimating];
+    
+    [pleaseWaitAlert.view addSubview:indicator];
+    [self presentViewController:pleaseWaitAlert animated:YES completion:^(void)
     {
-        
-        [self performSelector:@selector(getGeoLocation:) onThread:[NSThread mainThread] withObject:sourceTxtfield.text waitUntilDone:YES];
-        NSLog(@"source Location %@ /n Destination Location %@",sourceLoc,destinationLoc);
-    }
-    else
-        NSLog(@"Enter Source and destination ");
+        if(!(([sourceTxtfield.text isEqualToString:@""]) && ([destinationTxtfield.text isEqualToString:@""])))
+        {
+            
+            [self performSelector:@selector(getGeoLocation:) onThread:[NSThread mainThread] withObject:sourceTxtfield.text waitUntilDone:YES];
+            NSLog(@"source Location %@ /n Destination Location %@",sourceLoc,destinationLoc);
+        }
+        else
+        {
+            [indicator stopAnimating];
+            [pleaseWaitAlert dismissViewControllerAnimated:YES completion:nil];
+            NSLog(@"Enter Source and destination ");
+        }
+    }];
 }
 
 -(void)getGeoLocation:(NSString *)locationStr
 {
     
-
     if (!self.geocoder) {
         NSLog(@"Geocdoing");
         self.geocoder = [[CLGeocoder alloc] init];
     }
     
-    [self.geocoder geocodeAddressString:locationStr completionHandler:^(NSArray *placemarks, NSError *error) {
+    [self.geocoder geocodeAddressString:locationStr completionHandler:^(NSArray *placemarks, NSError *error)
+     {
         NSLog(@"Fetch Gecodingaddress");
         if ([placemarks count] > 0)
         {
@@ -84,15 +108,21 @@
             else
             {
                 destinationLoc=placemark.location;
-                NSLog(@"destination %@",destinationLoc);
-                [self performSegueWithIdentifier:@"startedID" sender:nil];
+
+                [indicator stopAnimating];
+                [pleaseWaitAlert dismissViewControllerAnimated:YES completion:^(void)
+                 {
+                     NSLog(@"destination %@",destinationLoc);
+                     [self performSegueWithIdentifier:@"startedID" sender:nil];
+                 }];
             }
-            
-            
         }
     }];
 
 }
+
+
+
 
 
 -(IBAction)cancelAction:(id)sender
